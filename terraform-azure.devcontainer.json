@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/go
+{
+	"name": "Go",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/go:1-1.24-bookworm",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.formatOnSave": true,
+				"files.autoSave": "afterDelay",
+				"go.toolsManagement.checkForUpdates": "local",
+				"go.useLanguageServer": true,
+				"go.goroot": "/usr/local/go",
+				"terraform.experimentalFeatures.validateOnSave": true,
+				"files.associations": {
+					"**/.azuredevops/**/*.yml": "azure-pipelines"
+				}
+			},
+			"extensions": [
+				"hashicorp.terraform",
+				"hashicorp.hcl",
+				"ms-azuretools.vscode-azureterraform",
+				"golang.Go",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-azure-devops.azure-pipelines"
+			]
+		}
+	},
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/devcontainers-extra/features/terraform-docs:1": {}
+	}
+}
